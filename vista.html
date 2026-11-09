@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donación de sangre</title>
 </head>
+
 <body style="margin: 0;">
 
     <header style="
@@ -21,40 +22,63 @@
         display: flex;
         justify-content: center;
         gap: 30px;
-        margin-top: 40px;">
+        margin-top: 40px;
+        margin-bottom: 30px;">
 
         <fieldset>
-            <legend>Grupo sanguíneo</legend>
-
-            <label><input type="radio" name="opcion1" value="A"> A</label>
-            <br>
-            <label><input type="radio" name="opcion1" value="A+"> A+</label>
-            <br>
-            <label><input type="radio" name="opcion1" value="AB"> AB</label>
-            <br>
-            <label><input type="radio" name="opcion1" value="O"> O</label>
+            <legend>DONANTES</legend>
+            <label><input type="radio" name="donantes" value="O-"> O−</label><br>
+            <label><input type="radio" name="donantes" value="O+"> O+</label><br>
+            <label><input type="radio" name="donantes" value="A-"> A−</label><br>
+            <label><input type="radio" name="donantes" value="A+"> A+</label><br>
+            <label><input type="radio" name="donantes" value="B-"> B−</label><br>
+            <label><input type="radio" name="donantes" value="B+"> B+</label><br>
+            <label><input type="radio" name="donantes" value="AB-"> AB−</label><br>
+            <label><input type="radio" name="donantes" value="AB+"> AB+</label>
         </fieldset>
 
         <fieldset>
-            <legend>Grupo sanguíneo</legend>
-
-            <label><input type="radio" name="opcion1" value="A"> A</label>
-            <br>
-            <label><input type="radio" name="opcion1" value="A+"> A+</label>
-            <br>
-            <label><input type="radio" name="opcion1" value="AB"> AB</label>
-            <br>
-            <label><input type="radio" name="opcion1" value="O"> O</label>
+            <legend>PACIENTES</legend>
+            <label><input type="radio" name="pacientes" value="O-"> O−</label><br>
+            <label><input type="radio" name="pacientes" value="O+"> O+</label><br>
+            <label><input type="radio" name="pacientes" value="A-"> A−</label><br>
+            <label><input type="radio" name="pacientes" value="A+"> A+</label><br>
+            <label><input type="radio" name="pacientes" value="B-"> B−</label><br>
+            <label><input type="radio" name="pacientes" value="B+"> B+</label><br>
+            <label><input type="radio" name="pacientes" value="AB-"> AB−</label><br>
+            <label><input type="radio" name="pacientes" value="AB+"> AB+</label>
         </fieldset>
-      
-   
-    </div>    
-        <div style="text-align: center; margin-top: 30px;">
-    <button type="button" onclick="location.reload()">
-        Nueva partida
-    </button>
-</div>
 
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <button type="button" onclick="location.reload()">
+            Nueva partida
+        </button>
+    </div>
+
+    <!-- Barra lateral izquierda -->
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 100%;
+        background-color: #e14949;
+        z-index: -1;">
+    </div>
+
+    <!-- Barra lateral derecha -->
+    <div style="
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 100%;
+        background-color: #e14949;
+        z-index: -1;">
+    </div>
 
 </body>
 </html>
+```
