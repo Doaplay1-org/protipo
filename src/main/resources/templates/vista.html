@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donación de sangre</title>
+    <title>DOAPLAY</title>
 </head>
 
 <body style="margin: 0;">
@@ -18,15 +19,32 @@
         DOAPLAY
     </header>
 
+    <nav style="
+        background-color: #eeeeee;
+        padding: 8px 20px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        border-bottom: 1px solid #cccccc;
+        font-size: 13px;
+    ">
+        <a href="#" style="color: #333; text-decoration: none;">Quiénes somos</a>
+
+        <a href="#" style="color: #333; text-decoration: none;">Cómo se juega</a>
+
+        <a href="#" style="color: #333; text-decoration: none;">Nueva Partida</a>
+    </nav>
+
     <div style="
         display: flex;
         justify-content: center;
         gap: 30px;
         margin-top: 40px;
-        margin-bottom: 30px;">
+        margin-bottom: 15px;">
 
         <fieldset>
             <legend>DONANTES</legend>
+
             <label><input type="radio" name="donantes" value="O-"> O−</label><br>
             <label><input type="radio" name="donantes" value="O+"> O+</label><br>
             <label><input type="radio" name="donantes" value="A-"> A−</label><br>
@@ -39,6 +57,7 @@
 
         <fieldset>
             <legend>PACIENTES</legend>
+
             <label><input type="radio" name="pacientes" value="O-"> O−</label><br>
             <label><input type="radio" name="pacientes" value="O+"> O+</label><br>
             <label><input type="radio" name="pacientes" value="A-"> A−</label><br>
@@ -51,9 +70,12 @@
 
     </div>
 
-    <div style="text-align: center; margin-top: 30px;">
-        <button type="button" onclick="location.reload()">
-            Nueva partida
+    <div style="text-align: center;">
+        <button type="button" style="
+            padding: 5px 12px;
+            font-size: 13px;
+            cursor: pointer;">
+            Emparejar
         </button>
     </div>
 
@@ -81,4 +103,3 @@
 
 </body>
 </html>
-```
