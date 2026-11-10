@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DoaplayBackendApplication {
+public class DoaPlayApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DoaplayBackendApplication.class, args);
+		SpringApplication.run(DoaPlayApp.class, args);
 	}
 
 }
