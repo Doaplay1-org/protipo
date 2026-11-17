@@ -41,6 +41,8 @@
         gap: 30px;
         margin-top: 40px;
         margin-bottom: 15px;">
+ <form action=get method="post"  th:action="${/submit}" th:object="${formInfo}">
+    
 
         <fieldset>
             <legend>DONANTES</legend>
@@ -61,7 +63,7 @@
         <span th:text="${grupo}"></span>
     </label>
         </fieldset>
-
+ </form>
     </div>
 
     <div style="text-align: center;">
