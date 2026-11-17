@@ -2,9 +2,10 @@ package com.doaplay.doaplay_backend.dto;
 
 import lombok.Data;
 
-@Data 
+@Data
 
 public class Jugador {
-private String nombre;
-private  Long puntuacion;    
+    private String nombre;
+    private Long puntuacion;
+    // AUN NO LO HEMOS USADO
 }

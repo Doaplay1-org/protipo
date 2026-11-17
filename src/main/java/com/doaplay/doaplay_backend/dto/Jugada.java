@@ -5,7 +5,8 @@ import lombok.Data;
 @Data 
 public class Jugada {
     private Carta donante;
-    private  Carta paciente;
+    private Carta paciente;
     private Boolean  correcto;
+    //AUN NO LO HEMOS USADO
     
 }
