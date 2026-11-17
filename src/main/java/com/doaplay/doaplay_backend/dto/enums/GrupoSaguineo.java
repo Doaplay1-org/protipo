@@ -1,4 +1,4 @@
-package com.doaplay.doaplay_backend.dto;
+package com.doaplay.doaplay_backend.dto.enums;
 
 public enum GrupoSaguineo {
     O_NEGATIVO,

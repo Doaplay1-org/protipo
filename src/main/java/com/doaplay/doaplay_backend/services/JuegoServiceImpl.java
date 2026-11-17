@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.doaplay.doaplay_backend.dto.Carta;
-import com.doaplay.doaplay_backend.dto.Donante;
-import com.doaplay.doaplay_backend.dto.Jugada;
 
 @Service 
 @Scope ("session")
@@ -18,12 +16,12 @@ public class JuegoServiceImpl implements JuegoService{
 
     private List<Carta> cartasDoante;
     private List<Carta> cartasPaciente;
-    //private List<Carta> cartasEspeciales;
     private List<Carta> cartasJugador;
-    private List<Carta> cartasMesa;
     private List<Carta> montonCartas;
     private int puntajeJugador=0;
     
+    // private List<Carta> cartasMesa; AUN NO LO HEMOS USADO
+    //private List<Carta> cartasEspeciales; AUN NO LO HEMOS USADO
 
     @Override 
     public List<Carta> robarCarta() {

@@ -1,5 +1,7 @@
 package com.doaplay.doaplay_backend.dto;
 
+import com.doaplay.doaplay_backend.dto.enums.GrupoSaguineo;
+
 import lombok.Data;
 
 @Data 
