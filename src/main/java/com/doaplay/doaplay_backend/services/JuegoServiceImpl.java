@@ -47,11 +47,10 @@ public class JuegoServiceImpl implements JuegoService{
 
     @Override
     public void emparejar(Carta doante, Carta paciente) {
-        if(doante.getTipo().equals(paciente.getTipo())){
-            String mensaje="No se puede emparejar cartas del mismo tipo";
-        }
-        else{
-        if(doante.getGrupoSaguineo().equals(paciente.getGrupoSaguineo())){
+        Donante donante = new Donante();
+        donante.setGrupoDon(doante.getGrupoSaguineo());
+        donante.setGrupoPac(paciente.getGrupoSaguineo());
+        if(donante.esSalvadoPor()){
             montonCartas.add(doante);
             montonCartas.add(paciente);
             cartasJugador.remove(doante);
@@ -61,8 +60,6 @@ public class JuegoServiceImpl implements JuegoService{
         else{
             String mensaje="No se puede emparejar cartas de diferente grupo sanguineo";
         }
-    }
-        
     }
 
     @Override

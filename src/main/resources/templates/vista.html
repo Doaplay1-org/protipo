@@ -45,27 +45,21 @@
         <fieldset>
             <legend>DONANTES</legend>
 
-            <label><input type="radio" name="donantes" value="O-"> O−</label><br>
-            <label><input type="radio" name="donantes" value="O+"> O+</label><br>
-            <label><input type="radio" name="donantes" value="A-"> A−</label><br>
-            <label><input type="radio" name="donantes" value="A+"> A+</label><br>
-            <label><input type="radio" name="donantes" value="B-"> B−</label><br>
-            <label><input type="radio" name="donantes" value="B+"> B+</label><br>
-            <label><input type="radio" name="donantes" value="AB-"> AB−</label><br>
-            <label><input type="radio" name="donantes" value="AB+"> AB+</label>
+            
+    <label th:each="grupo : ${T(com.example.demo.enums.GrupoSanguineo).values()}">
+        <input type="radio" name="donantes" th:value="${grupo}">
+        <span th:text="${grupo}"></span>
+    </label>
         </fieldset>
 
         <fieldset>
             <legend>PACIENTES</legend>
 
-            <label><input type="radio" name="pacientes" value="O-"> O−</label><br>
-            <label><input type="radio" name="pacientes" value="O+"> O+</label><br>
-            <label><input type="radio" name="pacientes" value="A-"> A−</label><br>
-            <label><input type="radio" name="pacientes" value="A+"> A+</label><br>
-            <label><input type="radio" name="pacientes" value="B-"> B−</label><br>
-            <label><input type="radio" name="pacientes" value="B+"> B+</label><br>
-            <label><input type="radio" name="pacientes" value="AB-"> AB−</label><br>
-            <label><input type="radio" name="pacientes" value="AB+"> AB+</label>
+            
+    <label th:each="grupo : ${T(com.example.demo.enums.GrupoSanguineo).values()}">
+        <input type="radio" name="donantes" th:value="${grupo}">
+        <span th:text="${grupo}"></span>
+    </label>
         </fieldset>
 
     </div>
