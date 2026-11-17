@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data 
 public class FormInfo {
-    Integer seleccionDonante;
-    Integer seleccionPaciente;
+    private String seleccionDonante;
+    private String seleccionPaciente;
 }
