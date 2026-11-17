@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.doaplay.doaplay_backend.dto.Carta;
+import com.doaplay.doaplay_backend.dto.Donante;
+import com.doaplay.doaplay_backend.dto.Jugada;
 
 @Service 
 @Scope ("session")
@@ -16,51 +18,73 @@ public class JuegoServiceImpl implements JuegoService{
 
     private List<Carta> cartasDoante;
     private List<Carta> cartasPaciente;
+    //private List<Carta> cartasEspeciales;
+    private List<Carta> cartasJugador;
+    private List<Carta> cartasMesa;
+    private List<Carta> montonCartas;
+    private int puntajeJugador=0;
+    
 
-    private List<Carta> cartasDoanteRobadas;
-    private List<Carta> cartasPacienteRobadas;
-
-    @Override
-    public List<Carta> robarPaciente(int cantidad_robar) {
-        for(int i=0; i<cantidad_robar; i++){
-            Carta carta = cartasPaciente.remove(0);
-            cartasPacienteRobadas.add(carta);
+    @Override 
+    public List<Carta> robarCarta() {
+        if(cartasDoante.isEmpty() && cartasPaciente.isEmpty() /*&& cartasEspeciales.isEmpty()*/){
+            return null;
         }
-        return cartasPacienteRobadas;
-    }
-
-    @Override
-    public List<Carta> robarDoante(int cantidad_robar) {
-        for(int i=0; i<cantidad_robar; i++){
-            Carta carta = cartasDoante.remove(0);
-            cartasDoanteRobadas.add(carta);
+        else{
+            while(cartasJugador.size()<5){
+                int randomNum=random.nextInt(2);
+                if(randomNum==0){
+                    cartasJugador.add(cartasDoante.remove(0));
+                }
+                else if(randomNum==1){
+                    cartasJugador.add(cartasPaciente.remove(0));
+                }
+                /*else if(randomNum==2){
+                    cartasJugador.add(cartasEspeciales.remove(0));
+                }*/
+            }
+            return cartasJugador;
         }
-        return cartasDoanteRobadas;
     }
 
     @Override
     public void emparejar(Carta doante, Carta paciente) {
+        if(doante.getTipo().equals(paciente.getTipo())){
+            String mensaje="No se puede emparejar cartas del mismo tipo";
+        }
+        else{
+        if(doante.getGrupoSaguineo().equals(paciente.getGrupoSaguineo())){
+            montonCartas.add(doante);
+            montonCartas.add(paciente);
+            cartasJugador.remove(doante);
+            cartasJugador.remove(paciente);
+            puntuar();
+        }
+        else{
+            String mensaje="No se puede emparejar cartas de diferente grupo sanguineo";
+        }
+    }
         
     }
 
     @Override
     public void puntuar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'puntuar'");
+        puntajeJugador++;
     }
 
     //Metodo para reiniciar/Iniciar una nueva partida
     @Override
     public void nuevaPartida() {
         //se limpian todas las listas para evitar errores de duplicidad y se crean nuevas cartas para el juego
-        cartasDoanteRobadas.clear();
-        cartasPacienteRobadas.clear();
         cartasDoante.clear();
         cartasPaciente.clear();
+        puntajeJugador=0;
+        //cartasEspeciales.clear();
         //editar este metodo para que las cartas no esten vacias
         for(int i=0; i<=15;i++){
             cartasDoante.add(new Carta());
             cartasPaciente.add(new Carta());
+            //cartasEspeciales.add(new Carta());
         }
     }
 //Metodo que randomiza el orden de las cartas de ambas barajas
@@ -86,6 +110,24 @@ public class JuegoServiceImpl implements JuegoService{
             cartasPaciente.set(newPos, cartasPaciente.get(i));
             cartasPaciente.set(i, cartaMoved);
         }
+        /*for(int i=0; i<cartasEspeciales.size(); i++){
+            int newPos=random.nextInt(cartasEspeciales.size());
+            while(newPos==i){
+                newPos=random.nextInt(cartasEspeciales.size());
+            }
+            Carta cartaMoved=cartasEspeciales.get(newPos);
+            cartasEspeciales.set(newPos, cartasEspeciales.get(i));
+            cartasEspeciales.set(i, cartaMoved);
+        }*/
     }
+
+    /*@Override 
+    public void jugarCartaEspecial(Carta carta) {
+        
+    }*/
     
+    @Override 
+    public void finalizarTurno() {
+        robarCarta();
+    }
 }
