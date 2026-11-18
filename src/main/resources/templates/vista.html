@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,97 +8,66 @@
 
 <body style="margin: 0;">
 
-    <header style="
-        background-color: #8A0303;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        font-size: 28px;
-        font-weight: bold;">
+    <header style="background-color: #8A0303; color: white; text-align: center; padding: 20px; font-size: 28px; font-weight: bold;">
         DOAPLAY
     </header>
 
-    <nav style="
-        background-color: #eeeeee;
-        padding: 8px 20px;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        border-bottom: 1px solid #cccccc;
-        font-size: 13px;
-    ">
+    <nav style="background-color: #eeeeee; padding: 8px 20px; display: flex; align-items: center; gap: 30px; border-bottom: 1px solid #cccccc; font-size: 13px;">
         <a href="#" style="color: #333; text-decoration: none;">Quiénes somos</a>
-
         <a href="#" style="color: #333; text-decoration: none;">Cómo se juega</a>
-
-        <a href="#" style="color: #333; text-decoration: none;">Nueva Partida</a>
+        <a th:href="@{/}" style="color: #333; text-decoration: none;">Nueva Partida</a>
     </nav>
 
-    <div style="
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 40px;
-        margin-bottom: 15px;">
+    <form method="post" th:action="@{/submit}" th:object="${formInfo}"
+          style="margin-top: 40px;">
 
-        <fieldset>
-            <legend>DONANTES</legend>
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 30px;">
 
-            <label><input type="radio" name="donantes" value="O-"> O−</label><br>
-            <label><input type="radio" name="donantes" value="O+"> O+</label><br>
-            <label><input type="radio" name="donantes" value="A-"> A−</label><br>
-            <label><input type="radio" name="donantes" value="A+"> A+</label><br>
-            <label><input type="radio" name="donantes" value="B-"> B−</label><br>
-            <label><input type="radio" name="donantes" value="B+"> B+</label><br>
-            <label><input type="radio" name="donantes" value="AB-"> AB−</label><br>
-            <label><input type="radio" name="donantes" value="AB+"> AB+</label>
-        </fieldset>
+            <fieldset style="width: 250px;">
+                <legend>DONANTES</legend>
 
-        <fieldset>
-            <legend>PACIENTES</legend>
+                <div th:each="carta : ${donante}">
+                    <label>
+                        <input type="radio"
+                               th:field="*{seleccionDonante}"
+                               th:value="${carta.grupoSaguineo}"
+                               required>
+                        <span th:text="${carta.grupoSaguineo}"></span>
+                    </label>
+                </div>
+            </fieldset>
 
-            <label><input type="radio" name="pacientes" value="O-"> O−</label><br>
-            <label><input type="radio" name="pacientes" value="O+"> O+</label><br>
-            <label><input type="radio" name="pacientes" value="A-"> A−</label><br>
-            <label><input type="radio" name="pacientes" value="A+"> A+</label><br>
-            <label><input type="radio" name="pacientes" value="B-"> B−</label><br>
-            <label><input type="radio" name="pacientes" value="B+"> B+</label><br>
-            <label><input type="radio" name="pacientes" value="AB-"> AB−</label><br>
-            <label><input type="radio" name="pacientes" value="AB+"> AB+</label>
-        </fieldset>
+            <fieldset style="width: 250px;">
+                <legend>PACIENTES</legend>
 
-    </div>
+                <div th:each="carta : ${paciente}">
+                    <label>
+                        <input type="radio"
+                               th:field="*{seleccionPaciente}"
+                               th:value="${carta.grupoSaguineo}"
+                               required>
+                        <span th:text="${carta.grupoSaguineo}"></span>
+                    </label>
+                </div>
+            </fieldset>
 
-    <div style="text-align: center;">
-        <button type="button" style="
-            padding: 5px 12px;
-            font-size: 13px;
-            cursor: pointer;">
-            Emparejar
-        </button>
-    </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit">Emparejar</button>
+        </div>
+
+        <p style="text-align: center;">
+            Puntos: <span th:text="${jugada}">0</span>
+        </p>
+
+    </form>
 
     <!-- Barra lateral izquierda -->
-    <div style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 100%;
-        background-color: #e14949;
-        z-index: -1;">
-    </div>
+    <div style="position: fixed; top: 0; left: 0; width: 20px; height: 100%; background-color: #e14949; z-index: -1;"></div>
 
     <!-- Barra lateral derecha -->
-    <div style="
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 20px;
-        height: 100%;
-        background-color: #e14949;
-        z-index: -1;">
-    </div>
+    <div style="position: fixed; top: 0; right: 0; width: 20px; height: 100%; background-color: #e14949; z-index: -1;"></div>
 
 </body>
 </html>
