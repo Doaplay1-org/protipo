@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DoaPlay</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<header class="cabecera">
+    <h1>DOAPLAY</h1>
+</header>
+
+<main class="contenido">
+    <div class="juego">
+        <p class="sub">Empareja cada paciente con un donante de sangre compatible.</p>
+
+        <!-- Contador, cartas pendientes y nueva partida -->
+        <div class="bar">
+            <div>Emparejamientos: <b th:text="${partida.contador}">0</b></div>
+            <div class="small">
+                Mazo de pacientes: <span th:text="${partida.mazoPacientes.size()}">0</span> ·
+                Mazo de donantes: <span th:text="${partida.mazoDonantes.size()}">0</span>
+            </div>
+            <form th:action="@{/nueva}" method="post">
+                <button type="submit" class="nueva">Nueva partida</button>
+            </form>
+        </div>
+
+        <!-- Listas de radios y botón emparejar -->
+        <form th:action="@{/emparejar}" method="post">
+            <div class="cols">
+                <fieldset>
+                    <legend>Pacientes</legend>
+                    <div class="vacio" th:if="${partida.pacientesVisibles.isEmpty()}">Sin cartas</div>
+                    <label th:each="carta, i : ${partida.pacientesVisibles}">
+                        <input type="radio" name="paciente" th:value="${i.index}">
+                        <span th:text="${carta.etiqueta}">O+</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Donantes</legend>
+                    <div class="vacio" th:if="${partida.donantesVisibles.isEmpty()}">Sin cartas</div>
+                    <label th:each="carta, i : ${partida.donantesVisibles}">
+                        <input type="radio" name="donante" th:value="${i.index}">
+                        <span th:text="${carta.etiqueta}">O−</span>
+                    </label>
+                </fieldset>
+            </div>
+
+            <button type="submit" class="emparejar"
+                    th:disabled="${partida.estado.name() != 'EN_CURSO'}">Emparejar</button>
+        </form>
+
+        <!-- Aviso de acierto, fallo o falta de selección -->
+        <div class="msg" th:if="mensaje!=null"th:classappend="{tipoMensaje}" th:text="${mensaje}"></div>
+
+        <!-- Final de la partida -->
+        <div class="msg final ok" th:if="${partida.estado.name() == 'VICTORIA'}"
+             th:text="'¡Victoria! Has completado todos los emparejamientos (' + ${partida.contador} + ').'"></div>
+        <div class="msg final error" th:if="${partida.estado.name() == 'PERDIDA'}"
+             th:text="'Bloqueo: no hay ninguna combinación compatible. Has perdido con ' + ${partida.contador} + ' emparejamientos.'"></div>
+    </div>
+</main>
+</body>
+</html>
+

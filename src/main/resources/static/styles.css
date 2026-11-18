@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Fondo rojo: son las barras laterales */
+body {
+    margin: 0;
+    background: #e24b4b;
+    color: #241a1c;
+    font: 16px/1.5 Georgia, "Times New Roman", serif;
+}
+
+/* Cabecera */
+.cabecera {
+    background: #8b0000;
+    color: #fff;
+    text-align: center;
+    padding: 18px 10px;
+}
+
+.cabecera h1 {
+    margin: 0;
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+}
+
+/* Zona blanca central */
+.contenido {
+    background: #fff;
+    margin: 0 20px;
+    padding: 24px 16px 40px;
+    min-height: calc(100vh - 70px);
+}
+
+.juego {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.sub {
+    margin: 0 0 16px;
+    color: #6d5f62;
+}
+
+/* Barra del contador */
+.bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #c9bcbf;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+}
+
+.bar form {
+    margin: 0;
+}
+
+.bar b {
+    font-size: 1.4rem;
+    color: #a3122a;
+}
+
+.small {
+    color: #6d5f62;
+    font-size: 0.9rem;
+}
+
+/* Botones */
+button {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #a3122a;
+    padding: 8px 16px;
+    background: transparent;
+    color: #a3122a;
+}
+
+button.emparejar {
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+button:hover:not(:disabled) {
+    background: #a3122a;
+    color: #fff;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible + span {
+    outline: 3px solid #a3122a;
+    outline-offset: 2px;
+}
+
+/* Listas de cartas */
+.cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+@media (max-width: 520px) {
+    .cols {
+        grid-template-columns: 1fr;
+    }
+}
+
+fieldset {
+    border: 1px solid #c9bcbf;
+    border-radius: 10px;
+    margin: 0;
+    padding: 10px 12px 12px;
+    min-width: 0;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+label {
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+label span {
+    display: flex;
+    align-items: center;
+    border: 1px solid #c9bcbf;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    font-size: 1.15rem;
+}
+
+label input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Carta seleccionada */
+label input:checked + span {
+    border: 2px solid #a3122a;
+    color: #a3122a;
+    font-weight: bold;
+}
+
+.vacio {
+    color: #6d5f62;
+    font-style: italic;
+    padding: 8px 0;
+}
+
+/* Mensajes: verde si acierta, rojo si falla, texto blanco */
+.msg {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.msg.ok {
+    background: #1d6b3a;
+}
+
+.msg.error {
+    background: #a3122a;
+}
+
+.msg.final {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
