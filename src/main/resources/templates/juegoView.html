@@ -55,7 +55,7 @@
         </form>
 
         <!-- Aviso de acierto, fallo o falta de selección -->
-        <div class="msg" th:if="mensaje!=null"th:classappend="{tipoMensaje}" th:text="${mensaje}"></div>
+        <div class="msg" th:if="${mensaje != null}" th:classappend="${tipoMensaje}" th:text="${mensaje}"></div>
 
         <!-- Final de la partida -->
         <div class="msg final ok" th:if="${partida.estado.name() == 'VICTORIA'}"
