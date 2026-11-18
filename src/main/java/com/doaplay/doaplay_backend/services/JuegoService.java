@@ -18,5 +18,6 @@ public interface JuegoService {
     public  List<GrupoSaguineo> obtenerCuatroAleatorios();
     public Integer emparejarPorGrupo(String grupoDonante, String grupoPaciente) ;
     //public void jugarCartaEspecial(Carta carta);
+     //public void jugarCartaEspecial(Carta carta, Integrator integrator);
 
 }
